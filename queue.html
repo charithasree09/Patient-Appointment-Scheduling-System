@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Appointment Queue</title>
+
+    <style>
+        body{
+            font-family:Arial, sans-serif;
+            background:#f5f5f5;
+            padding:30px;
+        }
+
+        .container{
+            max-width:800px;
+            margin:auto;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h1{
+            text-align:center;
+            color:#0b6b61;
+        }
+
+        input{
+            padding:10px;
+            width:250px;
+            margin-right:10px;
+        }
+
+        button{
+            padding:10px 20px;
+            border:none;
+            border-radius:8px;
+            background:#0b6b61;
+            color:white;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#0b84b3;
+        }
+
+        ul{
+            margin-top:20px;
+        }
+
+        li{
+            padding:10px;
+            background:#eef7f6;
+            margin:8px 0;
+            border-radius:8px;
+        }
+
+        .status{
+            margin-top:20px;
+            font-size:18px;
+            color:#0b6b61;
+            font-weight:bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Patient Appointment Queue</h1>
+
+    <input type="text" id="patientName"
+           placeholder="Enter Patient Name">
+
+    <button onclick="enqueuePatient()">
+        Add Patient
+    </button>
+
+    <button onclick="dequeuePatient()">
+        Call Next Patient
+    </button>
+
+    <div class="status" id="currentPatient">
+        No Patient Being Served
+    </div>
+
+    <h3>Waiting Queue</h3>
+
+    <ul id="queueList"></ul>
+
+</div>
+
+<script>
+
+let queue = [];
+
+function enqueuePatient(){
+
+    let name =
+    document.getElementById("patientName").value;
+
+    if(name===""){
+        alert("Enter Patient Name");
+        return;
+    }
+
+    queue.push(name);
+
+    document.getElementById("patientName").value="";
+
+    displayQueue();
+}
+
+function dequeuePatient(){
+
+    if(queue.length===0){
+
+        alert("No Patients in Queue");
+        return;
+    }
+
+    let servedPatient = queue.shift();
+
+    document.getElementById("currentPatient").innerHTML =
+    "Currently Serving: " + servedPatient;
+
+    displayQueue();
+}
+
+function displayQueue(){
+
+    let list =
+    document.getElementById("queueList");
+
+    list.innerHTML="";
+
+    queue.forEach(function(patient,index){
+
+        let li =
+        document.createElement("li");
+
+        li.innerHTML =
+        "Queue No " + (index+1)
+        + " - " + patient;
+
+        list.appendChild(li);
+    });
+}
+
+</script>
+
+</body>
+</html>

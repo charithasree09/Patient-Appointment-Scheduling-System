@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Appointment</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7f8;
+}
+
+.container{
+    max-width:700px;
+    margin:50px auto;
+    background:white;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+    color:#0b6b61;
+    margin-bottom:25px;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+textarea{
+    resize:none;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    background:#0b6b61;
+    color:white;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#0b84b3;
+}
+
+.success{
+    text-align:center;
+    margin-top:20px;
+    color:green;
+    font-weight:bold;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Book Doctor Appointment</h1>
+<form action="appointment.php" method="POST">
+
+        <div class="form-group">
+            <label>Patient Name</label>
+            <input type="text" name="patient_name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number</label>
+<input type="text" name="phone" required>
+        </div>
+
+        <div class="form-group">
+            <label>Select Department</label>
+                <select name="department" required>
+                <option>Cardiology</option>
+                <option>Neurology</option>
+                <option>Orthopedics</option>
+                <option>Dental</option>
+                <option>Pediatrics</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Appointment Date</label>
+<input type="date" name="appointment_date" required>
+        </div>
+
+        <div class="form-group">
+            <label>Describe Symptoms</label>
+            <textarea name="symptoms" rows="4"></textarea>
+        </div>
+
+        <button type="submit">
+            Book Appointment
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
